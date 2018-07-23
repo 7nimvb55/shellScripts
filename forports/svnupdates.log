@@ -1,0 +1,42 @@
+17-10-25_034846_:_:_:_svn update /usr/ports_:_:_:_
+Updating '/usr/ports':
+Error validating server certificate for 'https://8.8.178.107:443':
+ - The certificate hostname does not match.
+Certificate information:
+ - Hostname: svn.freebsd.org
+ - Valid: from Sep  4 20:20:00 2017 GMT until Dec  3 20:20:00 2017 GMT
+ - Issuer: Let's Encrypt Authority X3, Let's Encrypt, US
+ - Fingerprint: 06:7E:95:08:43:CA:A3:11:F3:8C:71:FE:91:1E:E4:DB:D9:7B:D4:BA
+(R)eject, accept (t)emporarily or accept (p)ermanently? nsh   e e sp
+svn: E170013: Unable to connect to a repository at URL 'https://8.8.178.107/ports/head'
+svn: E230001: Server SSL certificate verification failed: certificate issued for a different hostname
+17-10-25_043927_:_:_:_svn update /usr/ports_:_:_:_
+Updating '/usr/ports':
+Error validating server certificate for 'https://8.8.178.107:443':
+ - The certificate hostname does not match.
+Certificate information:
+ - Hostname: svn.freebsd.org
+ - Valid: from Sep  4 20:20:00 2017 GMT until Dec  3 20:20:00 2017 GMT
+ - Issuer: Let's Encrypt Authority X3, Let's Encrypt, US
+ - Fingerprint: 06:7E:95:08:43:CA:A3:11:F3:8C:71:FE:91:1E:E4:DB:D9:7B:D4:BA
+Updating '/usr/ports':
+U    /usr/ports/math/octave-forge-io/Makefile
+U    /usr/ports/math/octave-forge-io/distinfo
+U    /usr/ports/emulators/virtualbox-ose/Makefile
+A    /usr/ports/emulators/virtualbox-ose/files/patch-src_VBox_Debugger_Makefile.kmk
+A    /usr/ports/emulators/virtualbox-ose/files/patch-src_VBox_Frontends_VirtualBox_Makefile.kmk
+A    /usr/ports/emulators/virtualbox-ose/files/patch-src_VBox_HostServices_SharedOpenGL_Makefile.kmk
+A    /usr/ports/emulators/virtualbox-ose/files/patch-src_VBox_HostServices_SharedClipboard_x11-stub.cpp
+U    /usr/ports/www/rtv/Makefile
+U    /usr/ports/www/rtv/distinfo
+U    /usr/ports/archivers/kf5-karchive/Makefile
+U    /usr/ports/devel/kf5-extra-cmake-modules/Makefile
+U    /usr/ports/devel/kf5-kapidox/Makefile
+U    /usr/ports/devel/kf5-kconfig/Makefile
+U    /usr/ports/devel/kf5-kcoreaddons/Makefile
+U    /usr/ports/devel/kf5-kdbusaddons/Makefile
+U    /usr/ports/textproc/kf5-kcodecs/Makefile
+U    /usr/ports/x11-themes/kf5-breeze-icons/Makefile
+U    /usr/ports/x11-toolkits/kf5-attica/Makefile
+U    /usr/ports/security/vuxml/vuln.xml
+Updated to revision 452825.

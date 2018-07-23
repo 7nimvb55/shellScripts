@@ -1,0 +1,82 @@
+#!/bin/sh
+sysctl net.inet.ip.fw.one_pass=0
+sysctl net.inet.ip.fw.verbose_limit=10
+sysctl net.inet.ip.fw.verbose=1
+
+kldload ipfw
+
+fwbcmd=/sbin/ipfw
+
+${fwbcmd} -f flush
+${fwbcmd} -f pipe flush
+${fwbcmd} -f queue flush
+
+${fwbcmd} add check-state
+
+${fwbcmd} add 60010 deny log ip from any to 10.0.0.0/8 in
+${fwbcmd} add 60020 deny log ip from 10.0.0.0/8 to any in
+${fwbcmd} add 60030 deny log ip from any to 172.16.0.0/12 in
+${fwbcmd} add 60040 deny log ip from 172.16.0.0/12 to any in
+${fwbcmd} add 60050 deny log ip from any to 192.168.0.0/16 in
+${fwbcmd} add 60060 deny log ip from 192.168.0.0/16 to any in
+${fwbcmd} add 60070 deny log ip from any to 0.0.0.0/8 in
+${fwbcmd} add 60080 deny log ip from 0.0.0.0/8 to any in
+${fwbcmd} add 61010 deny log ip from any to 169.254.0.0/16 in
+${fwbcmd} add 61020 deny log ip from 169.254.0.0/16 to any in
+${fwbcmd} add 61030 deny log ip from any to 224.0.0.0/4 in
+${fwbcmd} add 61040 deny log ip from 224.0.0.0/4 to any in
+${fwbcmd} add 61050 deny log ip from any to 240.0.0.0/4 in
+${fwbcmd} add 61060 deny log ip from 240.0.0.0/4 to any in
+
+${fwbcmd} add 61110 deny log icmp from any to 255.255.255.255 in
+${fwbcmd} add 61120 deny log icmp from any to 255.255.255.255 out
+${fwbcmd} add 61130 deny log icmp from 255.255.255.255 to any in
+${fwbcmd} add 61140 deny log icmp from 255.255.255.255 to any out
+
+${fwbcmd} add 62010 deny log ip from 10.0.0.0/8 to any out
+${fwbcmd} add 62020 deny log ip from any to 10.0.0.0/8 out
+${fwbcmd} add 62030 deny log ip from 172.16.0.0/12 to any out
+${fwbcmd} add 62040 deny log ip from any to 172.16.0.0/12 out
+${fwbcmd} add 62050 deny log ip from 192.168.0.0/16 to any out
+${fwbcmd} add 62060 deny log ip from any to 192.168.0.0/16 out
+${fwbcmd} add 62070 deny log ip from 0.0.0.0/8 to any out
+${fwbcmd} add 62080 deny log ip from any to 0.0.0.0/8 out
+${fwbcmd} add 62090 deny log ip from 169.254.0.0/16 to any out
+${fwbcmd} add 62100 deny log ip from any to 169.254.0.0/16 out
+${fwbcmd} add 62110 deny log ip from 224.0.0.0/4 to any out
+${fwbcmd} add 62120 deny log ip from any to 224.0.0.0/4 out
+${fwbcmd} add 62130 deny log ip from 240.0.0.0/4 to any out
+${fwbcmd} add 62140 deny log ip from any to 240.0.0.0/4 out
+
+${fwbcmd} add 64500 deny log ip from any to any not verrevpath in
+${fwbcmd} add 64600 deny log ip6 from any to any not verrevpath in
+
+${fwbcmd} add 64700 deny log ip from any to 127.0.0.0/8 in
+${fwbcmd} add 64800 deny log ip from any to 127.0.0.0/8 out
+${fwbcmd} add 64900 deny log ip from 127.0.0.0/8 to any in
+${fwbcmd} add 64950 deny log ip from 127.0.0.0/8 to any out
+
+${fwbcmd} add 65000 deny log ip from any to any in
+${fwbcmd} add 65100 deny log ip from any to any out
+${fwbcmd} add 65200 deny log ip6 from any to any in
+${fwbcmd} add 65300 deny log ip6 from any to any out
+
+${fwbcmd} add 65310 deny log tcp from any to any in
+${fwbcmd} add 65320 deny log tcp from any to any out
+#${fwbcmd} add 65330 deny log tcp6 from any to any in
+#${fwbcmd} add 65340 deny log tcp6 from any to any out
+${fwbcmd} add 65350 deny log udp from any to any in
+${fwbcmd} add 65360 deny log udp from any to any out
+#${fwbcmd} add 65370 deny log udp6 from any to any in
+#${fwbcmd} add 65380 deny log udp6 from any to any out
+${fwbcmd} add 65390 deny log icmp from any to any in
+${fwbcmd} add 65400 deny log icmp from any to any out
+${fwbcmd} add 65410 deny log icmp6 from any to any in
+${fwbcmd} add 65420 deny log icmp6 from any to any out
+
+${fwbcmd} add 65501 deny log ip from any to any in
+${fwbcmd} add 65502 deny log ip from any to any out
+${fwbcmd} add 65503 deny log ip6 from any to any in
+${fwbcmd} add 65504 deny log ip6 from any to any out
+
+ipfw show

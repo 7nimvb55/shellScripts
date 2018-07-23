@@ -1,0 +1,13 @@
+/usr/ports/www/apache22/
+/usr/ports/www/mod_fcgid/
+/usr/ports/lang/php70/
+/usr/ports/lang/php70-extensions/
+/usr/ports/databases/mysql57-client/
+/usr/ports/databases/mysql57-server/
+/usr/ports/databases/php70-mysqli/
+/usr/ports/databases/php70-pdo_mysql/
+/usr/ports/databases/phpmyadmin/
+/usr/ports/www/drupal8/
+/usr/ports/www/firefox/
+/usr/ports/www/firefox-i18n/
+/usr/ports/www/chromium/

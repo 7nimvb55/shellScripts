@@ -1,0 +1,2965 @@
+#at# 17-10-04_194706 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=20352 bytes_sent=353 }
+#at# 17-10-04_194706 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_194706 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ngctl21147      Type: socket          ID: 0000004a   Num hooks: 0
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-04_194706 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_194706 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_194706 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_194706 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_194706 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_194706 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_194706 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_194706 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_194706 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_194706 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_194706 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_194706 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_194706 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_194706 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_194706 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=20355 bytes_sent=353 }
+#at# 17-10-04_201922 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=80862 bytes_sent=353 }
+#at# 17-10-04_201922 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_201922 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl38887      Type: socket          ID: 0000005c   Num hooks: 0
+#at# 17-10-04_201922 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_201922 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_201922 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_201922 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_201922 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_201922 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_201922 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_201922 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_201922 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_201922 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_201922 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_201922 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_201922 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_201922 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_201922 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=80865 bytes_sent=353 }
+#at# 17-10-04_202043 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=83383 bytes_sent=353 }
+#at# 17-10-04_202043 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_202043 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl42828      Type: socket          ID: 0000006e   Num hooks: 0
+#at# 17-10-04_202043 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_202043 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_202043 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_202043 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_202043 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_202043 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_202043 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_202043 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_202043 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_202043 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_202043 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_202043 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_202043 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_202043 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_202043 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=83386 bytes_sent=353 }
+#at# 17-10-04_202257 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=87572 bytes_sent=353 }
+#at# 17-10-04_202257 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_202257 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ngctl70851      Type: socket          ID: 00000080   Num hooks: 0
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-04_202257 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_202257 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_202257 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_202257 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_202257 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_202257 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_202257 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_202257 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_202257 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_202257 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_202257 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_202257 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_202257 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_202257 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_202257 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=87575 bytes_sent=353 }
+#at# 17-10-04_202355 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=89372 bytes_sent=353 }
+#at# 17-10-04_202355 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_202355 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl72375      Type: socket          ID: 00000092   Num hooks: 0
+#at# 17-10-04_202355 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_202355 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_202355 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_202355 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_202355 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_202355 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_202355 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_202355 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_202355 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_202355 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_202355 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_202355 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_202355 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_202355 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_202355 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=89375 bytes_sent=353 }
+#at# 17-10-04_202623 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=94003 bytes_sent=353 }
+#at# 17-10-04_202623 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_202623 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: ngctl76062      Type: socket          ID: 000000a4   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-04_202623 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_202623 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_202623 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_202623 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_202623 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_202623 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_202623 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_202623 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_202623 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_202623 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_202623 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_202623 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_202623 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_202623 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_202623 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=94006 bytes_sent=353 }
+#at# 17-10-04_202855 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=98767 bytes_sent=353 }
+#at# 17-10-04_202855 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_202855 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl63877      Type: socket          ID: 000000b6   Num hooks: 0
+#at# 17-10-04_202855 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_202855 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_202855 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_202855 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_202855 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_202855 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_202855 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_202855 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_202855 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_202855 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_202855 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_202855 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_202855 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_202855 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_202855 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=98770 bytes_sent=353 }
+#at# 17-10-04_203044 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=102149 bytes_sent=353 }
+#at# 17-10-04_203044 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_203044 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ngctl48881      Type: socket          ID: 000000c8   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-04_203044 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_203044 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_203044 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_203044 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_203044 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_203044 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_203044 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_203044 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_203044 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_203044 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_203044 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_203044 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_203044 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_203044 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_203044 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=102152 bytes_sent=353 }
+#at# 17-10-04_205352 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=145522 bytes_sent=353 }
+#at# 17-10-04_205352 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_205352 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl60099      Type: socket          ID: 000000da   Num hooks: 0
+#at# 17-10-04_205352 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_205352 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_205352 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_205352 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_205352 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_205352 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_205352 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_205352 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_205352 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_205352 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_205352 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_205352 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_205352 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_205352 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_205352 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=145525 bytes_sent=353 }
+#at# 17-10-04_205546 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149086 bytes_sent=353 }
+#at# 17-10-04_205546 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_205546 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ngctl38936      Type: socket          ID: 000000ec   Num hooks: 0
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-04_205546 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_205546 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_205546 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_205546 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_205546 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_205546 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_205546 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_205546 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_205546 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_205546 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_205546 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_205546 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_205546 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_205546 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_205546 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149089 bytes_sent=353 }
+#at# 17-10-04_205605 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149692 bytes_sent=353 }
+#at# 17-10-04_205605 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-04_205605 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl27293      Type: socket          ID: 000000fe   Num hooks: 0
+#at# 17-10-04_205605 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-04_205605 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-04_205605 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-04_205605 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-04_205605 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-04_205605 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-04_205605 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-04_205605 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-04_205605 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-04_205605 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-04_205605 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-04_205605 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-04_205605 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-04_205605 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-04_205605 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149695 bytes_sent=353 }
+#at# 17-10-06_043935 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=102018 bytes_sent=353 }
+#at# 17-10-06_043935 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-06_043935 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl9002       Type: socket          ID: 00000014   Num hooks: 0
+#at# 17-10-06_043935 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-06_043935 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_043935 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-06_043935 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_043935 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-06_043935 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_043935 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-06_043935 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_043935 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-06_043935 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_043935 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-06_043935 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-06_043935 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-06_043935 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-06_043935 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=102021 bytes_sent=353 }
+#at# 17-10-06_043940 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=102177 bytes_sent=353 }
+#at# 17-10-06_043940 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-06_043940 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: ngctl1000       Type: socket          ID: 00000026   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-06_043940 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-06_043940 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_043940 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-06_043940 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_043940 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-06_043940 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_043940 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-06_043940 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_043940 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-06_043940 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_043940 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-06_043940 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-06_043940 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-06_043940 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-06_043940 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=102180 bytes_sent=353 }
+#at# 17-10-06_043946 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=102338 bytes_sent=353 }
+#at# 17-10-06_043946 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-06_043946 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl84616      Type: socket          ID: 00000038   Num hooks: 0
+#at# 17-10-06_043946 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-06_043946 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_043946 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-06_043946 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_043946 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-06_043946 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_043946 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-06_043946 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_043946 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-06_043946 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_043946 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-06_043946 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-06_043946 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-06_043946 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-06_043946 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=102341 bytes_sent=353 }
+#at# 17-10-06_050458 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149612 bytes_sent=353 }
+#at# 17-10-06_050458 #cmd# ngctl types #out#
+There are 10 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+            tee       0
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-06_050458 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ngctl85961      Type: socket          ID: 0000004c   Num hooks: 0
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-06_050458 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-06_050458 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_050458 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-06_050458 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_050458 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-06_050458 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_050458 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-06_050458 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_050458 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-06_050458 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_050458 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-06_050458 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-06_050458 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-06_050458 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-06_050458 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149615 bytes_sent=353 }
+#at# 17-10-06_050501 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149683 bytes_sent=353 }
+#at# 17-10-06_050501 #cmd# ngctl types #out#
+There are 10 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+            tee       0
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-06_050501 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl75305      Type: socket          ID: 0000005e   Num hooks: 0
+#at# 17-10-06_050501 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-06_050501 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_050501 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-06_050501 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_050501 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-06_050501 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_050501 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-06_050501 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_050501 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-06_050501 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_050501 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-06_050501 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-06_050501 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-06_050501 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-06_050501 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149685 bytes_sent=353 }
+#at# 17-10-06_050502 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149737 bytes_sent=353 }
+#at# 17-10-06_050502 #cmd# ngctl types #out#
+There are 10 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+            tee       0
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-06_050502 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl60629      Type: socket          ID: 00000070   Num hooks: 0
+#at# 17-10-06_050502 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-06_050502 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_050502 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-06_050502 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_050502 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-06_050502 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_050502 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-06_050502 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_050502 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-06_050502 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_050502 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-06_050502 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-06_050502 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-06_050502 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-06_050502 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149739 bytes_sent=353 }
+#at# 17-10-06_050504 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149792 bytes_sent=353 }
+#at# 17-10-06_050504 #cmd# ngctl types #out#
+There are 10 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+            tee       0
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-06_050504 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ngctl49610      Type: socket          ID: 00000082   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-06_050504 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-06_050504 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_050504 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-06_050504 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_050504 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-06_050504 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_050504 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-06_050504 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_050504 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-06_050504 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_050504 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-06_050504 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-06_050504 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-06_050504 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-06_050504 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=149794 bytes_sent=353 }
+#at# 17-10-06_050519 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=150253 bytes_sent=353 }
+#at# 17-10-06_050519 #cmd# ngctl types #out#
+There are 10 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+            tee       0
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-06_050519 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl43611      Type: socket          ID: 00000094   Num hooks: 0
+#at# 17-10-06_050519 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-06_050519 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_050519 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-06_050519 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_050519 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-06_050519 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_050519 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-06_050519 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_050519 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-06_050519 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_050519 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-06_050519 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-06_050519 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-06_050519 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-06_050519 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=150256 bytes_sent=353 }
+#at# 17-10-06_053943 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=10968 bytes_sent=353 }
+#at# 17-10-06_053943 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-06_053943 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl17539      Type: socket          ID: 00000019   Num hooks: 0
+#at# 17-10-06_053943 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-06_053943 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_053943 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-06_053943 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_053943 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-06_053943 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_053943 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-06_053943 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_053943 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-06_053943 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_053943 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-06_053943 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-06_053943 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-06_053943 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-06_053943 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=10971 bytes_sent=353 }
+#at# 17-10-06_054556 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054556 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054556 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+  Name: ngctl83694      Type: socket          ID: 00000034   Num hooks: 0
+#at# 17-10-06_054556 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054556 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054556 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054556 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054556 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054556 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054556 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054556 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054556 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054556 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054556 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054556 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054556 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054556 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054556 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054559 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054559 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054559 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: ngctl81023      Type: socket          ID: 00000046   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054559 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054559 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054559 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054559 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054559 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054559 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054559 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054559 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054559 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054559 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054559 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054559 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054559 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054559 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054559 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054601 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054601 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054601 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+  Name: ngctl68476      Type: socket          ID: 00000058   Num hooks: 0
+#at# 17-10-06_054601 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054601 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054601 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054601 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054601 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054601 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054601 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054601 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054601 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054601 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054601 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054601 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054601 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054601 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054601 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054602 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054602 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054602 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: ngctl59364      Type: socket          ID: 0000006a   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054602 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054602 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054602 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054602 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054602 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054602 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054602 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054602 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054602 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054602 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054602 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054602 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054602 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054602 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054602 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054603 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054603 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054603 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+  Name: ngctl37982      Type: socket          ID: 0000007c   Num hooks: 0
+#at# 17-10-06_054603 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054603 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054603 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054603 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054603 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054603 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054603 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054603 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054603 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054603 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054603 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054603 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054603 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054603 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054603 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054604 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054604 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054604 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: ngctl15566      Type: socket          ID: 0000008e   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054604 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054604 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054604 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054604 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054604 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054604 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054604 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054604 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054604 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054604 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054604 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054604 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054604 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054604 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054604 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054605 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054605 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054605 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ngctl95954      Type: socket          ID: 000000a0   Num hooks: 0
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054605 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054605 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054605 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054605 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054605 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054605 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054605 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054605 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054605 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054605 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054605 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054605 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054605 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054605 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054605 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054606 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054606 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054606 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+  Name: ngctl78266      Type: socket          ID: 000000b2   Num hooks: 0
+#at# 17-10-06_054606 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054606 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054606 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054606 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054606 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054606 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054606 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054606 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054606 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054606 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054606 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054606 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054606 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054606 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054606 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054607 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054607 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054607 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: ngctl62899      Type: socket          ID: 000000c4   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054607 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054607 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054607 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054607 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054607 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054607 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054607 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054607 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054607 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054607 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054607 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054607 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054607 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054607 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054607 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054719 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054719 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054719 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+  Name: ngctl78287      Type: socket          ID: 000000d8   Num hooks: 0
+#at# 17-10-06_054719 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054719 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054719 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054719 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054719 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054719 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054719 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054719 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054719 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054719 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054719 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054719 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054719 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054719 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054719 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054727 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-06_054727 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       0
+            ubt       1
+            hci       0
+           ipfw       1
+#at# 17-10-06_054727 #cmd# ngctl list #out#
+There are 7 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+  Name: ngctl79959      Type: socket          ID: 000000ea   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054727 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 0
+#at# 17-10-06_054727 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: 
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-06_054727 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000030   Num hooks: 0
+#at# 17-10-06_054727 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-06_054727 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 0000002f   Num hooks: 0
+#at# 17-10-06_054727 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-06_054727 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 0000002e   Num hooks: 0
+#at# 17-10-06_054727 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-06_054727 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000031   Num hooks: 0
+#at# 17-10-06_054727 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-06_054727 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-06_054727 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-06_054727 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-06_054727 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-06_054727 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=9 bytes_recv=84 pckts_sent=16391 bytes_sent=353 }
+#at# 17-10-13_174028 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=3781 bytes_sent=353 }
+#at# 17-10-13_174028 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-13_174028 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl57582      Type: socket          ID: 00000014   Num hooks: 0
+#at# 17-10-13_174028 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-13_174028 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-13_174028 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-13_174028 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-13_174028 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-13_174028 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-13_174028 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-13_174028 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-13_174028 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-13_174028 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-13_174028 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-13_174028 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-13_174028 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-13_174028 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-13_174028 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=3784 bytes_sent=353 }
+#at# 17-10-13_174047 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=4372 bytes_sent=353 }
+#at# 17-10-13_174047 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-13_174047 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: ngctl5690       Type: socket          ID: 00000026   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-13_174047 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-13_174047 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-13_174047 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-13_174047 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-13_174047 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-13_174047 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-13_174047 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-13_174047 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-13_174047 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-13_174047 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-13_174047 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-13_174047 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-13_174047 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-13_174047 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-13_174047 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=4375 bytes_sent=353 }
+#at# 17-10-13_180940 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=58548 bytes_sent=353 }
+#at# 17-10-13_180940 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-13_180940 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Name: ngctl62843      Type: socket          ID: 00000038   Num hooks: 0
+#at# 17-10-13_180940 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-13_180940 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-13_180940 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-13_180940 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-13_180940 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-13_180940 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-13_180940 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-13_180940 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-13_180940 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-13_180940 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-13_180940 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-13_180940 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-13_180940 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-13_180940 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-13_180940 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=58551 bytes_sent=353 }
+#at# 17-10-13_180948 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=58783 bytes_sent=353 }
+#at# 17-10-13_180948 #cmd# ngctl types #out#
+There are 9 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+          l2cap       1
+            ubt       1
+            hci       1
+           ipfw       1
+#at# 17-10-13_180948 #cmd# ngctl list #out#
+There are 9 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Name: ngctl51714      Type: socket          ID: 0000004a   Num hooks: 0
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+#at# 17-10-13_180948 #cmd# ngctl show ubt0: #out#
+  Name: ubt0            Type: ubt             ID: 00000002   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  hook            ubt0hci         hci          00000008        drv            
+#at# 17-10-13_180948 #cmd# ngctl status ubt0: #out#
+Status for "ubt0:":
+Hook: hook
+Task flags: 0
+Debug: 3
+CMD queue: [have:0,max:64]
+ACL queue: [have:0,max:64]
+SCO queue: [have:0,max:64]
+#at# 17-10-13_180948 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000003   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0raw         ubt0hci         hci          00000008        raw            
+#at# 17-10-13_180948 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-13_180948 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000004   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0ctl         ubt0l2cap       l2cap        0000000c        ctl            
+#at# 17-10-13_180948 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-13_180948 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000005   Num hooks: 1
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  ubt0l2c         ubt0l2cap       l2cap        0000000c        l2c            
+#at# 17-10-13_180948 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-13_180948 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000006   Num hooks: 0
+#at# 17-10-13_180948 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-13_180948 #cmd# ngctl show ubt0hci: #out#
+  Name: ubt0hci         Type: hci             ID: 00000008   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  raw             btsock_hci_raw  btsock_hci_raw 00000003        ubt0raw        
+  acl             ubt0l2cap       l2cap        0000000c        hci            
+  drv             ubt0            ubt          00000002        hook           
+#at# 17-10-13_180948 #cmd# ngctl status ubt0hci: #out#
+Status for "ubt0hci:":
+bdaddr dc:a9:71:48:8b:fd
+Hooks  drv acl  raw
+State  0x3
+Queue  cmd:0
+Buffer cmd:1,acl:10,10,310,sco:8,8,64
+#at# 17-10-13_180948 #cmd# ngctl show ubt0l2cap: #out#
+  Name: ubt0l2cap       Type: l2cap           ID: 0000000c   Num hooks: 3
+  Local hook      Peer name       Peer type    Peer ID         Peer hook      
+  ----------      ---------       ---------    -------         ---------      
+  l2c             btsock_l2c      btsock_l2c   00000005        ubt0l2c        
+  ctl             btsock_l2c_raw  btsock_l2c_raw 00000004        ubt0ctl        
+  hci             ubt0hci         hci          00000008        acl            
+#at# 17-10-13_180948 #cmd# ngctl status ubt0l2cap: #out#
+Status for "ubt0l2cap:":
+bdaddr dc:a9:71:48:8b:fd, pkt_size 310
+Hooks hci l2c ctl
+Flags 0
+
+#at# 17-10-13_180948 #cmd# ngctl msg ubt0: get_stat #out#
+Rec'd response "get_stat" (5) from "[2]:":
+Args:	{ pckts_recv=10 bytes_recv=91 pckts_sent=58786 bytes_sent=353 }
+#at# 17-10-23_080710 #cmd# ngctl msg ubt0: get_stat #out#
+#at# 17-10-23_080710 #cmd# ngctl types #out#
+There are 6 total types:
+      Type name   Number of living nodes
+      ---------   ----------------------
+         socket       1
+     btsock_sco       1
+     btsock_l2c       1
+ btsock_l2c_raw       1
+ btsock_hci_raw       1
+           ipfw       1
+#at# 17-10-23_080710 #cmd# ngctl list #out#
+There are 6 total nodes:
+  Name: ipfw            Type: ipfw            ID: 00000001   Num hooks: 0
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000016   Num hooks: 0
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000017   Num hooks: 0
+  Name: btsock_sco      Type: btsock_sco      ID: 00000018   Num hooks: 0
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000019   Num hooks: 0
+  Name: ngctl56722      Type: socket          ID: 0000001d   Num hooks: 0
+#at# 17-10-23_080710 #cmd# ngctl show ubt0: #out#
+#at# 17-10-23_080710 #cmd# ngctl status ubt0: #out#
+#at# 17-10-23_080710 #cmd# ngctl show btsock_hci_raw: #out#
+  Name: btsock_hci_raw  Type: btsock_hci_raw  ID: 00000019   Num hooks: 0
+#at# 17-10-23_080710 #cmd# ngctl status btsock_hci_raw: #out#
+No status available for "btsock_hci_raw:"
+#at# 17-10-23_080710 #cmd# ngctl show btsock_l2c_raw: #out#
+  Name: btsock_l2c_raw  Type: btsock_l2c_raw  ID: 00000016   Num hooks: 0
+#at# 17-10-23_080710 #cmd# ngctl status btsock_l2c_raw: #out#
+No status available for "btsock_l2c_raw:"
+#at# 17-10-23_080710 #cmd# ngctl show btsock_l2c: #out#
+  Name: btsock_l2c      Type: btsock_l2c      ID: 00000017   Num hooks: 0
+#at# 17-10-23_080710 #cmd# ngctl status btsock_l2c: #out#
+No status available for "btsock_l2c:"
+#at# 17-10-23_080710 #cmd# ngctl show btsock_sco: #out#
+  Name: btsock_sco      Type: btsock_sco      ID: 00000018   Num hooks: 0
+#at# 17-10-23_080710 #cmd# ngctl status btsock_sco: #out#
+No status available for "btsock_sco:"
+#at# 17-10-23_080710 #cmd# ngctl show ubt0hci: #out#
+#at# 17-10-23_080710 #cmd# ngctl status ubt0hci: #out#
+#at# 17-10-23_080710 #cmd# ngctl show ubt0l2cap: #out#
+#at# 17-10-23_080710 #cmd# ngctl status ubt0l2cap: #out#
+#at# 17-10-23_080710 #cmd# ngctl msg ubt0: get_stat #out#

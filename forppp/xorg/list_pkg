@@ -1,0 +1,43 @@
+===>  Staging for xorg-7.7_3
+===>   xorg-7.7_3 depends on file: /usr/local/libdata/pkgconfig/dri.pc - not found
+===>   mesa-dri-17.2.2 depends on file: /usr/local/sbin/pkg - found
+===> Fetching all distfiles required by mesa-dri-17.2.2 for building
+===>  Extracting for mesa-dri-17.2.2
+=> SHA256 Checksum mismatch for mesa-17.2.2.tar.xz.
+*** Error code 1
+
+Stop.
+make[3]: stopped in /usr/ports/graphics/mesa-dri
+*** Error code 1
+
+Stop.
+make[2]: stopped in /usr/ports/graphics/mesa-dri
+*** Error code 1
+
+Stop.
+make[1]: stopped in /usr/ports/x11/xorg
+*** Error code 1
+
+Stop.
+make: stopped in /usr/ports/x11/xorg
+===>  Staging for xorg-7.7_3
+===>   xorg-7.7_3 depends on file: /usr/local/libdata/pkgconfig/dri.pc - not found
+===>   mesa-dri-17.2.2 depends on file: /usr/local/sbin/pkg - found
+=> mesa-17.2.2.tar.xz doesn't seem to exist in /usr/ports/distfiles/.
+=> /usr/ports/distfiles/ is not writable by you; cannot fetch.
+*** Error code 1
+
+Stop.
+make[3]: stopped in /usr/ports/graphics/mesa-dri
+*** Error code 1
+
+Stop.
+make[2]: stopped in /usr/ports/graphics/mesa-dri
+*** Error code 1
+
+Stop.
+make[1]: stopped in /usr/ports/x11/xorg
+*** Error code 1
+
+Stop.
+make: stopped in /usr/ports/x11/xorg

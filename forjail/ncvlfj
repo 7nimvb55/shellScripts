@@ -1,0 +1,271 @@
+#!/bin/sh
+# PROVIDE: ncvlfj
+# BEFORE: jail
+. /etc/rc.subr
+desc="New Control Virtual Lan For Jails"
+rcvar="ncvlfj_enable"
+
+
+#Work Directory
+wd=/etc
+#Read File Name
+rfn=rc.conf
+#Current Jail Name
+cjn='.locNC.ru'
+# MAC manufacturer prefix. This can be modified according to needs.
+MAC_PREFIX="e8:11:32"
+# Need add check for jail_enable parameter in rc.conf
+# @todo If jail set to No need connetct all physical devices to ng_hole
+
+ncje="jail_enable"
+ncjl="jail_list"
+nclcfg="jail"
+i='nbloc'
+#The phisical ethernet interface
+NCETHER_INTF="rl0"
+#Start num of routes
+STATIC_ROUTE_CNT=0
+#All connections counter
+ncacc=0
+#Name for bridge
+ncbname="ncsw"
+
+#IP Fire Wall
+ifw=/sbin/ipfw
+ncrn=01010
+#Port numbers for jails
+# for internet FTP, NS, HTTP, HTTPS, FTPS-DATA, FTPS
+ncpn1='20,21,22,53,80,443,989,990'
+# NS, HTTP, HTTPS
+ncpn2='53,80,443'
+# NS, HTTP, HTTPS, FTPS
+ncpn3='53,80,443,989,990'
+
+
+
+ncgrnum(){
+	
+	local ncCurNum ncFuncIter
+	ncCurNum=0
+	ncFuncIter=10
+	
+	while [ ${ncCurNum} -eq 0 ]; do
+		ncCurNum=`od -An -N2 -i /dev/random | sed -e 's/ //g' | \
+			awk '{ print $1 % 254 }'`
+		
+		ncFuncIter=`expr "${ncFuncIter}" - 1`
+		
+
+		if [ $ncFuncIter -eq 0 ]; then
+			exit
+		fi
+		
+		if [ ${ncCurNum} -ge 254 ]; then
+			ncCurNum=0
+			continue
+		fi
+	
+	done
+	echo $ncCurNum 
+}
+ncvlgm(){
+
+	local __nctoreturn ncM4 ncM5 ncM6 ncMAC 
+	# Generate a random mac address for virtual interface. First
+	# three octets can be changed by user. Last three octets are
+	# generated randomly.
+
+	ncM4=$( ncgrnum )
+
+	ncM5=$( ncgrnum )
+	
+	ncM6=$( ncgrnum )
+	
+	ncMAC=`printf ${MAC_PREFIX}:%02x:%02x:%02x ${ncM4} ${ncM5} ${ncM6}`
+	# Set the link address (mac address) of virtual interface in
+	# virtual node to randomly generated MAC.
+	echo $ncMAC
+	
+	#eval $__nctoreturn="'$MAC'"
+}
+ncvlgip(){
+	#Function Jail Ip
+	local fji1 fji2 fji3 fji4 ncvlgiptr
+
+	fji1=10
+
+	fji2=$( ncgrnum )
+
+	fji3=$( ncgrnum )
+
+	fji4=$( ncgrnum )
+
+	ncvlgiptr=$fji1'.'$fji2'.'$fji3'.'$fji4
+	echo $ncvlgiptr
+	#eval $__nctoreturn="'${ncvlgiptr}'"
+}
+ncvlsdbip(){
+	local fdji1 fdji2 fdji3 fdji4
+	fdji1=`echo "obase=2;$1" | bc | awk -F '|' \
+		'{print substr("00000000",1,\
+		8-length($1)) $1}'`
+	fdji2=`echo "obase=2;$2" | bc | awk -F '|' \
+		'{print substr("00000000",1,\
+		8-length($1)) $1}'`
+	fdji3=`echo "obase=2;$3" | bc | awk -F '|' \
+		'{print substr("00000000",1,\
+		8-length($1)) $1}'`
+	fdji4=`echo "obase=2;$4" | bc | awk -F '|' \
+		'{print substr("00000000",1,\
+		8-length($1)) $1}'`
+	echo "$fdji1.$fdji2.$fdji3.$fdji4"
+}
+
+
+
+#load_rc_config $nclcfg
+
+
+
+load_rc_config_var $nclcfg $ncje
+
+if checkyesno $ncje; then
+	echo "	$ncje = $jail_enable;"
+
+else
+	echo "Virtual net (Lan) is not possible to start, when $ncje = $jail_enable;"
+	exit
+fi
+for KLD in ng_ether ng_bridge ng_eiface; do
+	if ! kldstat -v | grep -qw ${KLD}; then
+		echo -n "Loading ${KLD}.ko... "
+		kldload ${KLD} || exit 1
+		echo "done"
+	fi
+done
+	
+
+
+echo "Creating eiface interface for virtual node ${i}."
+ngctl mkpeer eiface ether ether
+EIFACE=`ngctl l -n | grep ngeth | tail -n 1| awk '{print $2}'`
+echo "Interface ${EIFACE} is created."
+
+# Generate a random mac address for virtual interface. First
+# three octets can be changed by user. Last three octets are
+# generated randomly.
+
+curMAC=$( ncvlgm )
+#echo 'Host MAC '${curMAC} >> ./vlscr.out
+# Set the link address (mac address) of virtual interface in
+# virtual node to randomly generated MAC.
+echo "For $i Setting MAC address of EIFACE to '${curMAC}'"
+ifconfig ${EIFACE} link ${curMAC}
+
+NCHOSTJIP=$( ncvlgip )
+
+#echo 'Host JIP'${NCHOSTJIP} >> ./vlscr.out
+
+echo "Setting IP address for ${EIFACE} to '${NCHOSTJIP}'"	
+ifconfig ${EIFACE} inet ${NCHOSTJIP}'/28'
+sleep 5
+echo "Connect ${EIFACE} by ethernet to Bridge on link0"
+ngctl mkpeer ${EIFACE}: bridge ether link${ncacc}
+ngctl name ${EIFACE}:ether ${ncbname}
+
+ncacc=`expr ${ncacc} + 1`
+
+
+
+${ifw} ${ncrn} add reset log logamount 10 tcp from any to ${NCHOSTJIP} in recv
+ncrn=`expr ${ncrn} + 10`
+${ifw} ${ncrn} add deny log logamount 10 ip from any to ${NCHOSTJIP} in setup
+ncrn=`expr ${ncrn} + 10`
+${ifw} ${ncrn} add allow log logamount 10 ip from ${NCHOSTJIP} to any ${ncpn2} out via ${EIFACE}
+ncrn=`expr ${ncrn} + 10`
+${ifw} ${ncrn} add allow log logamount 10 ip from any ${ncpn2} to ${NCHOSTJIP} in via ${EIFACE}
+ncrn=`expr ${ncrn} + 10`
+
+#-----------------------#################-----------------------------
+load_rc_config_var $nclcfg $ncjl
+#nc Jail Net Parameter
+ncjnp=""
+for i in $jail_list
+do
+echo $i
+
+
+
+TEMP_FILE=$wd'/ncbasejail.'$i'.conf'
+if [ ! -e ${TEMP_FILE} ]; then
+	echo "Virtual net (Lan) is not possible to start, when"
+	echo "no previous configuration(${TEMP_FILE}) found."
+	exit
+else
+	echo -n "Changing previous configuration file..."
+	echo "In the ${TEMP_FILE} hange host name..."
+	cat ${TEMP_FILE}\
+	 | sed '/host.hostname/s/ // gI'\
+	 | sed '/host.hostname/s/.*/				host.hostname = \"'${i}${cjn}'\"\; / gI' > ${wd}/jail.$i.conf
+	
+	echo "Creating eiface interface for virtual node ${i}."
+	ngctl mkpeer eiface ether ether
+
+	EIFACE=`ngctl l -n | grep ngeth | tail -n 1| awk '{print $2}'`
+	
+	#Generate ip adress for host
+	
+	NCJIP=$( ncvlgip )
+	#echo 'Host '${i}' IP '${NCJIP} >> ./vlscr.out
+
+	ncjnp=$ncjnp$i'|'${NCJIP}' '
+
+	# Generate a random mac address for virtual interface. First
+	# three octets can be changed by user. Last three octets are
+	# generated randomly.
+
+	NCMAC=$( ncvlgm )
+	#echo 'Host '${i}' MAC '${NCMAC} >> ./vlscr.out
+	sleep 5
+	
+	
+	echo "Interface ${EIFACE} is created."
+	
+#	ifconfig ${EIFACE} vnet ${i}
+	
+	echo "Setting MAC address of ${EIFACE} to '${NCMAC}'"
+	ifconfig ${EIFACE} link $NCMAC
+	
+	ifconfig ${EIFACE} inet ${NCJIP}'/28'
+	sleep 5
+	echo 'Connect '${EIFACE}' by ethernet to Bridge on link'${ncacc}
+	ngctl connect ${EIFACE}: ${ncbname}: ether link${ncacc}
+	
+	if [ "${STATIC_ROUTE_CNT}" != 0 ] ; then
+		DEFR_INTERFACE=${EIFACE}
+		DEFIP_INTERFACE=${NCJIP}
+#	else
+		
+	fi
+
+	echo "In the ${TEMP_FILE} Change ip adress..."
+	cat ${TEMP_FILE}\
+	 | sed '/ip4.addr/s/ // gI'\
+	 | sed '/ip4.addr/s/.*/	ip4.addr += \"'${EIFACE}'|'${NCJIP}'\/28\"\; / gI' > ${wd}/jail.$i.conf
+		 
+	${ifw} ${ncrn} add reset log logamount 10 tcp from any to ${NCJIP} in recv
+	ncrn=`expr ${ncrn} + 10`
+	${ifw} ${ncrn} add deny log logamount 10 ip from any to ${NCJIP} in setup
+	ncrn=`expr ${ncrn} + 10`
+	${ifw} ${ncrn} add allow log logamount 10 ip from ${NCJIP} to any ${ncpn2} out via ${EIFACE}
+	ncrn=`expr ${ncrn} + 10`
+	${ifw} ${ncrn} add allow log logamount 10 ip from any ${ncpn2} to ${NCJIP} in via ${EIFACE}
+	ncrn=`expr ${ncrn} + 10`	
+	
+	STATIC_ROUTE_CNT=`expr $STATIC_ROUTE_CNT + 1`
+	ncacc=`expr ${ncacc} + 1`
+
+		
+fi
+sleep 3
+done
